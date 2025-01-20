@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Joc del Laberint</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .input-section {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(6, 50px);
+            grid-template-rows: repeat(4, 50px);
+            gap: 2px;
+            background-color: #ccc;
+            padding: 2px;
+            margin: 20px;
+        }
+
+        .cell {
+            background-color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .path {
+            background-color: #90EE90;
+            transition: background-color 0.3s;
+        }
+
+        .start {
+            background-color: #FFB6C1;
+        }
+
+        .end {
+            background-color: #87CEEB;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 60px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input-section">
+        <h2>Joc del Laberint</h2>
+        <label for="steps">Introdueix un número de l'1 al 9:</label>
+        <input type="number" id="steps" min="1" max="9">
+        <button onclick="generatePath()">Genera el camí</button>
+    </div>
+    <div class="grid" id="grid"></div>
+
+    <script>
+
+        let imatges = [
+            {
+                nom: "amanida",
+                categoria: "d",
+                ruta: "imatges/d/amanida.png"
+            },
+            {
+                nom: "banyador",
+                categoria: "d",
+                ruta: "imatges/d/banyador.png"
+            },
+            {
+                nom: "cadena",
+                categoria: "d",
+                ruta: "imatges/d/cadena.png"
+            },
+            {
+                nom: "dau",
+                categoria: "d",
+                ruta: "imatges/d/dau.svg"
+            },
+            {
+                nom: "davantal",
+                categoria: "d",
+                ruta: "imatges/d/davantal.png"
+            },
+            {
+                nom: "dit",
+                categoria: "d",
+                ruta: "imatges/d/dit.png"
+            },
+            {
+                nom: "dutxa",
+                categoria: "d",
+                ruta: "imatges/d/dutxa.png"
+            },
+            {
+                nom: "balena",
+                categoria: "l",
+                ruta: "imatges/d/balena.png"
+            },
+            {
+                nom: "colze",
+                categoria: "l",
+                ruta: "imatges/d/colze.png"
+            },
+            {
+                nom: "galeta",
+                categoria: "l",
+                ruta: "imatges/d/galeta.png"
+            },
+            {
+                nom: "lavabo",
+                categoria: "l",
+                ruta: "imatges/d/lavabo.png"
+            },
+            {
+                nom: "lupa",
+                categoria: "l",
+                ruta: "imatges/d/lupa.png"
+            },
+            {
+                nom: "melo",
+                categoria: "l",
+                ruta: "imatges/d/melo.png"
+            },
+            {
+                nom: "pala",
+                categoria: "l",
+                ruta: "imatges/d/pala.png"
+            },
+            {
+                nom: "pilota",
+                categoria: "l",
+                ruta: "imatges/d/pilota.png"
+            },
+            {
+                nom: "plàtan",
+                categoria: "l",
+                ruta: "imatges/d/platan.png"
+            }
+        ];
+
+
+
+        // Crear la graella
+        const grid = document.getElementById('grid');
+        const cells = [];
+        const ROWS = 4;
+        const COLS = 6;
+
+        // Crear les cel·les
+        for (let i = 0; i < ROWS; i++) {
+            for (let j = 0; j < COLS; j++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                cell.dataset.row = i;
+                cell.dataset.col = j;
+                grid.appendChild(cell);
+                cells.push(cell);
+            }
+        }
+
+        function generatePath() {
+            // Netejar el camí anterior
+            cells.forEach(cell => {
+                cell.className = 'cell';
+            });
+
+            const steps = parseInt(document.getElementById('steps').value);
+            if (steps < 1 || steps > 12 || isNaN(steps)) {
+                alert('Si us plau, introdueix un número vàlid entre 1 i 12');
+                return;
+            }
+
+            // Posició inicial (cantonada inferior esquerra)
+            let currentRow = ROWS - 1;
+            let currentCol = 0;
+
+            // Posició final (cantonada superior dreta)
+            const endRow = 0;
+            const endCol = COLS - 1;
+
+            // Marcar inici i final
+            cells[currentRow * COLS + currentCol].className = 'cell start';
+            cells[endRow * COLS + endCol].className = 'cell end';
+
+            // Generar el camí
+            const path = [[currentRow, currentCol]];
+
+            for (let i = 0; i < steps; i++) {
+                const possibleMoves = [];
+
+                // Comprovar moviments possibles (amunt, dreta)
+                if (currentRow > 0 && !path.some(([r, c]) => r === currentRow - 1 && c === currentCol)) {
+                    possibleMoves.push([-1, 0]); // Amunt
+                }
+                if (currentCol < COLS - 1 && !path.some(([r, c]) => r === currentRow && c === currentCol + 1)) {
+                    possibleMoves.push([0, 1]); // Dreta
+                }
+
+                if (possibleMoves.length === 0) break;
+
+                // Escollir un moviment aleatori
+                const [rowMove, colMove] = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+
+                currentRow += rowMove;
+                currentCol += colMove;
+                path.push([currentRow, currentCol]);
+
+                // Marcar la cel·la com a part del camí
+                if (!(currentRow === endRow && currentCol === endCol) &&
+                    !(currentRow === ROWS - 1 && currentCol === 0)) {
+                    cells[currentRow * COLS + currentCol].className = 'cell path';
+                }
+            }
+        }
+
+        // Generar la graella inicial
+        generatePath();
+    </script>
+</body>
+
+</html>

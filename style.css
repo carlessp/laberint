@@ -1,0 +1,129 @@
+/* ========== CAPÇALERA ========== */
+.app-header {
+    background-color: #003d82; /* color sol·licitat */
+    padding: 10px 0;
+    text-align: center;
+  }
+  .app-title {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  /* ========== AMAGAR SECCIONS ========== */
+  .is-hidden {
+    display: none !important;
+  }
+  
+  /* ========== VIDES ========== */
+  #life-container {
+    display: inline-block;
+    margin: 10px;
+  }
+  .heart {
+    color: red;
+    font-size: 2rem;
+    margin: 0 5px;
+  }
+  
+  /* ========== AVÍS MODE PORTRAIT ========== */
+  #portrait-warning {
+    display: none; 
+    margin: 15px 0;
+    text-align: center;
+    color: #ff3860; /* un to vermell */
+    font-weight: bold;
+  }
+  .portrait-warning p {
+    margin: 0;
+  }
+  
+  /* ========== GRID DEL LABERINT ========== */
+  /* Per defecte: 4 files x 6 columnes, cada cel·la 80x80 (uns 480 x 320 totals) */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 110px);
+    grid-template-rows: repeat(4, 110px);
+    gap: 5px;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative; /* la fitxa #game-token es posicionarà absoluta */
+  }
+  
+  .grid-cell {
+    background-color: #f5f5f5;
+    border: 2px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .grid-cell img {
+    max-width: 70%;
+    max-height: 70%;
+  }
+  
+  /* Casella encertada (ressalt) */
+  .found {
+    background-color: #c5f7c5 !important;
+    box-shadow: inset 0 0 8px 2px #32CD32;
+  }
+  
+  /* ========== FITXA (TOKEN) ========== */
+  #game-token {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: gold;  /* o la imatge que vulguis */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    font-weight: bold;
+    color: #000;
+    transition: all 0.4s ease;
+    z-index: 10; 
+  }
+  
+  /* ========== ESCALAT EN PANTALLES MÉS GRANS ========== */
+  /* Si la pantalla és prou ampla (p.ex. > 1200px), fem les cel·les més grans */
+  @media (min-width: 1200px) {
+    .grid {
+      grid-template-columns: repeat(6, 100px);
+      grid-template-rows: repeat(4, 100px);
+    }
+  }
+  
+  /* Fins i tot més grans si passa de 1600px, etc. */
+  /* @media (min-width: 1600px) {
+    .grid {
+      grid-template-columns: repeat(6, 120px);
+      grid-template-rows: repeat(4, 120px);
+    }
+  } */
+  
+  /* ========== MÒBILS: DETECTAR SI ESTÀ EN PORTRAIT ========== */
+  /* En pantalles estretes (max-width: 600px), si l'orientació és portrait, 
+     amaguem la graella i mostrem l'avís. */
+  @media (max-width: 600px) and (orientation: portrait) {
+    #portrait-warning {
+      display: block; /* Mostra l'avís per girar el dispositiu */
+    }
+    .grid {
+      display: none;  /* No mostris la graella, per evitar que es vegi malament */
+    }
+  }
+  
+  /* Si l'orientació és landscape en pantalles estretes, 
+     podem mantenir la graella original (4 files x 6 col.) però potser la reduïm una mica. */
+  @media (max-width: 600px) and (orientation: landscape) {
+    .grid {
+      grid-template-columns: repeat(6, 60px);
+      grid-template-rows: repeat(4, 60px);
+    }
+    #portrait-warning {
+      display: none;
+    }
+  }
+  

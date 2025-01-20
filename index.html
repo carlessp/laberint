@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <title>Joc del Laberint</title>
+
+  <!-- Enllaç a l'arxiu CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Bulma (opcional per estil de botons, etc.) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+
+  <!-- Viewport meta: sugerim a l'usuari no fer zoom i intentar mode landscape en mòbil -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+</head>
+<body>
+
+<!-- CAPÇALERA -->
+<header class="app-header">
+  <h1 class="app-title">Joc del Laberint</h1>
+  <!-- <button id="btnReturn" class="button is-light">Torna a la selecció</button> -->
+</header>
+
+<!-- SECCIÓ BENVINGUDA -->
+<section id="section-welcome" class="section">
+  <div class="container has-text-centered">
+    <!-- <p>Prem "Comença" per iniciar.</p> -->
+    <button id="btnStart" class="button is-primary is-large">Comença</button>
+  </div>
+</section>
+
+<!-- SECCIÓ SELECCIÓ DE CATEGORIES -->
+<section id="section-selection" class="section is-hidden">
+  <div class="container">
+    <h2 class="title has-text-centered">Selecció de Sons</h2>
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <!-- So Objectiu -->
+        <div class="field">
+          <label class="label">So objectiu:</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select id="select-objective-sound"></select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sons soroll (checkboxes) -->
+        <div class="field">
+          <label class="label">Sons "soroll":</label>
+          <div class="control" id="checkbox-sounds"></div>
+        </div>
+
+        <div class="field has-text-centered">
+          <button id="btnGenerateLab" class="button is-success is-medium">Genera Laberint</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓ LABERINT -->
+<section id="section-labyrinth" class="section is-hidden">
+  <!-- <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h2 class="title has-text-centered">Joc del Laberint</h2>
+      </div>
+      <div class="column has-text-right">
+        <button id="btnReturn" class="button is-light">Torna a la selecció</button>
+      </div> -->
+    </div>
+
+    <!-- Missatge si està en portrait en un mòbil (o una pantalla estreta) -->
+    <div id="portrait-warning" class="portrait-warning">
+      <p>Si us plau, gira el dispositiu a <strong>mode horitzontal</strong> per jugar.</p>
+    </div>
+
+    <!-- Vides (3 cors) -->
+    <div class="has-text-centered">
+      <div id="life-container">
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+        <span class="heart">❤️</span>
+      </div>
+    </div>
+
+    <!-- Grid i fitxa -->
+    <div class="grid" id="grid">
+      <div id="game-token">★</div>
+    </div>
+  </div>
+</section>
+
+<!-- MODALS (Error, GameOver, Win) -->
+<div class="modal" id="modal-error">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Error!</p>
+      <button class="delete" aria-label="close" id="btnCloseErrorModal"></button>
+    </header>
+    <section class="modal-card-body">
+      <p>Has clicat una imatge que no correspon al camí correcte.</p>
+      <p>Perds una vida!</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-primary" id="btnErrorOk">D'acord</button>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" id="modal-gameover">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Fi del joc!</p>
+    </header>
+    <section class="modal-card-body">
+      <p>Has perdut totes les vides. Torna a intentar-ho!</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" id="btnGameOver">Torna a l'inici</button>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" id="modal-win">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Enhorabona!</p>
+    </header>
+    <section class="modal-card-body">
+      <p>Has completat el camí correctament!</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="btnWinOk">Continuar</button>
+    </footer>
+  </div>
+</div>
+
+<!-- Enllaç a JS -->
+<script src="script.js"></script>
+</body>
+</html>
