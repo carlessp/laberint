@@ -1,56 +1,66 @@
 /* ========== CAPÇALERA ========== */
 .app-header {
-    background-color: #003d82; /* color sol·licitat */
-    padding: 10px 0;
+    background: linear-gradient(135deg, #003d82, #0066cc);
+    padding: 15px 0;
     text-align: center;
-  }
-  .app-title {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.app-title {
     color: white;
     margin: 0;
-    font-size: 1.5rem;
-  }
-  
-  /* ========== AMAGAR SECCIONS ========== */
-  .is-hidden {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.score {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+/* ========== AMAGAR SECCIONS ========== */
+.is-hidden {
     display: none !important;
-  }
-  
-  /* ========== VIDES ========== */
-  #life-container {
+}
+
+/* ========== VIDES ========== */
+#life-container {
     display: inline-block;
     margin: 10px;
-  }
-  .heart {
+}
+
+.heart {
     color: red;
     font-size: 2rem;
     margin: 0 5px;
-  }
-  
-  /* ========== AVÍS MODE PORTRAIT ========== */
-  #portrait-warning {
-    display: none; 
+}
+
+/* ========== AVÍS MODE PORTRAIT ========== */
+#portrait-warning {
+    display: none;
     margin: 15px 0;
     text-align: center;
-    color: #ff3860; /* un to vermell */
+    color: #ff3860;
     font-weight: bold;
-  }
-  .portrait-warning p {
+}
+
+.portrait-warning p {
     margin: 0;
-  }
-  
-  /* ========== GRID DEL LABERINT ========== */
-  /* Per defecte: 4 files x 6 columnes, cada cel·la 80x80 (uns 480 x 320 totals) */
-  .grid {
+}
+
+/* ========== GRID DEL LABERINT ========== */
+.grid {
     display: grid;
-    grid-template-columns: repeat(6, 110px);
-    grid-template-rows: repeat(4, 110px);
-    gap: 5px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
     justify-content: center;
     margin-top: 20px;
-    position: relative; /* la fitxa #game-token es posicionarà absoluta */
-  }
-  
-  .grid-cell {
+    position: relative;
+}
+
+.grid-cell {
     background-color: #f5f5f5;
     border: 2px solid #ccc;
     display: flex;
@@ -58,72 +68,116 @@
     align-items: center;
     cursor: pointer;
     position: relative;
-  }
-  .grid-cell img {
+    transition: all 0.3s ease;
+}
+
+.grid-cell:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.grid-cell img {
     max-width: 70%;
     max-height: 70%;
-  }
-  
-  /* Casella encertada (ressalt) */
-  .found {
+}
+
+/* Casella encertada (ressalt) */
+.found {
     background-color: #c5f7c5 !important;
     box-shadow: inset 0 0 8px 2px #32CD32;
-  }
-  
-  /* ========== FITXA (TOKEN) ========== */
-  #game-token {
+}
+
+/* ========== FITXA (TOKEN) ========== */
+#game-token {
     position: absolute;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: gold;  /* o la imatge que vulguis */
-    display: flex; 
-    justify-content: center; 
+    background-color: gold;
+    display: flex;
+    justify-content: center;
     align-items: center;
     font-weight: bold;
     color: #000;
     transition: all 0.4s ease;
-    z-index: 10; 
-  }
-  
-  /* ========== ESCALAT EN PANTALLES MÉS GRANS ========== */
-  /* Si la pantalla és prou ampla (p.ex. > 1200px), fem les cel·les més grans */
-  @media (min-width: 1200px) {
-    .grid {
-      grid-template-columns: repeat(6, 100px);
-      grid-template-rows: repeat(4, 100px);
-    }
-  }
-  
-  /* Fins i tot més grans si passa de 1600px, etc. */
-  /* @media (min-width: 1600px) {
-    .grid {
-      grid-template-columns: repeat(6, 120px);
-      grid-template-rows: repeat(4, 120px);
-    }
-  } */
-  
-  /* ========== MÒBILS: DETECTAR SI ESTÀ EN PORTRAIT ========== */
-  /* En pantalles estretes (max-width: 600px), si l'orientació és portrait, 
-     amaguem la graella i mostrem l'avís. */
-  @media (max-width: 600px) and (orientation: portrait) {
+    z-index: 10;
+}
+
+/* ========== MODALS ========== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s;
+}
+
+.modal.is-active {
+    display: block;
+}
+
+.modal-card {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    animation: slideIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+}
+
+/* ========== MÒBILS: DETECTAR SI ESTÀ EN PORTRAIT ========== */
+@media (max-width: 600px) and (orientation: portrait) {
     #portrait-warning {
-      display: block; /* Mostra l'avís per girar el dispositiu */
+        display: block;
+        font-size: 1.2rem;
+        padding: 20px;
+        background-color: #ff3860;
+        color: white;
+        border-radius: 10px;
     }
+
     .grid {
-      display: none;  /* No mostris la graella, per evitar que es vegi malament */
+        display: none;
     }
-  }
-  
-  /* Si l'orientació és landscape en pantalles estretes, 
-     podem mantenir la graella original (4 files x 6 col.) però potser la reduïm una mica. */
-  @media (max-width: 600px) and (orientation: landscape) {
+}
+
+@media (max-width: 600px) and (orientation: landscape) {
     .grid {
-      grid-template-columns: repeat(6, 60px);
-      grid-template-rows: repeat(4, 60px);
+        grid-template-columns: repeat(6, 60px);
+        grid-template-rows: repeat(4, 60px);
     }
+
     #portrait-warning {
-      display: none;
+        display: none;
     }
-  }
-  
+}
+
+/* ========== TABLETS I PC ========== */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(6, 80px);
+        grid-template-rows: repeat(4, 80px);
+    }
+}
+
+@media (min-width: 1025px) {
+    .grid {
+        grid-template-columns: repeat(6, 100px);
+        grid-template-rows: repeat(4, 100px);
+    }
+}
