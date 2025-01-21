@@ -18,13 +18,12 @@
 <!-- CAPÇALERA -->
 <header class="app-header">
   <h1 class="app-title">Joc del Laberint</h1>
-  <!-- <button id="btnReturn" class="button is-light">Torna a la selecció</button> -->
+  <div id="score" class="score">Puntuació: 0</div>
 </header>
 
 <!-- SECCIÓ BENVINGUDA -->
 <section id="section-welcome" class="section">
   <div class="container has-text-centered">
-    <!-- <p>Prem "Comença" per iniciar.</p> -->
     <button id="btnStart" class="button is-primary is-large">Comença</button>
   </div>
 </section>
@@ -51,6 +50,20 @@
           <div class="control" id="checkbox-sounds"></div>
         </div>
 
+        <!-- Selector de nivells -->
+        <div class="field">
+          <label class="label">Nivell de dificultat:</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select id="select-level">
+                <option value="1">Fàcil</option>
+                <option value="2">Mitjà</option>
+                <option value="3">Difícil</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
         <div class="field has-text-centered">
           <button id="btnGenerateLab" class="button is-success is-medium">Genera Laberint</button>
         </div>
@@ -61,34 +74,22 @@
 
 <!-- SECCIÓ LABERINT -->
 <section id="section-labyrinth" class="section is-hidden">
-  <!-- <div class="container">
-    <div class="columns">
-      <div class="column">
-        <h2 class="title has-text-centered">Joc del Laberint</h2>
-      </div>
-      <div class="column has-text-right">
-        <button id="btnReturn" class="button is-light">Torna a la selecció</button>
-      </div> -->
-    </div>
+  <div id="portrait-warning" class="portrait-warning">
+    <p>Si us plau, gira el dispositiu a <strong>mode horitzontal</strong> per jugar.</p>
+  </div>
 
-    <!-- Missatge si està en portrait en un mòbil (o una pantalla estreta) -->
-    <div id="portrait-warning" class="portrait-warning">
-      <p>Si us plau, gira el dispositiu a <strong>mode horitzontal</strong> per jugar.</p>
+  <!-- Vides (3 cors) -->
+  <div class="has-text-centered">
+    <div id="life-container">
+      <span class="heart">❤️</span>
+      <span class="heart">❤️</span>
+      <span class="heart">❤️</span>
     </div>
+  </div>
 
-    <!-- Vides (3 cors) -->
-    <div class="has-text-centered">
-      <div id="life-container">
-        <span class="heart">❤️</span>
-        <span class="heart">❤️</span>
-        <span class="heart">❤️</span>
-      </div>
-    </div>
-
-    <!-- Grid i fitxa -->
-    <div class="grid" id="grid">
-      <div id="game-token">★</div>
-    </div>
+  <!-- Grid i fitxa -->
+  <div class="grid" id="grid">
+    <div id="game-token">★</div>
   </div>
 </section>
 
