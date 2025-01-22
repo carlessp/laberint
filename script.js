@@ -1,45 +1,45 @@
 // ========== DADES D'IMATGES ==========
 const imatges = [
-    { nom: "amanida",  categoria: "d", ruta: "../imatges/d/amanida.png" },
-    { nom: "banyador", categoria: "d", ruta: "../imatges/d/banyador.png" },
-    { nom: "cadena",   categoria: "d", ruta: "../imatges/d/cadena.png" },
-    { nom: "dau",      categoria: "d", ruta: "../imatges/d/dau.svg" },
-    { nom: "davantal", categoria: "d", ruta: "../imatges/d/davantal.png" },
-    { nom: "dit",      categoria: "d", ruta: "../imatges/d/dit.png" },
-    { nom: "dutxa",    categoria: "d", ruta: "../imatges/d/dutxa.png" },
-    { nom: "dent",    categoria: "d", ruta: "../imatges/d/dent.png" },
-    { nom: "dinar",    categoria: "d", ruta: "../imatges/d/dinar.png" },
-    { nom: "dofi",    categoria: "d", ruta: "../imatges/d/dofi.png" },
-    { nom: "nedar",    categoria: "d", ruta: "../imatges/d/nedar.png" },
-    { nom: "adeu",    categoria: "d", ruta: "../imatges/d/adeu.png" },
-    { nom: "medusa",    categoria: "d", ruta: "../imatges/d/medusa.png" },
+    { nom: "amanida",  categoria: "d", ruta: "imatges/d/amanida.png" },
+    { nom: "banyador", categoria: "d", ruta: "imatges/d/banyador.png" },
+    { nom: "cadena",   categoria: "d", ruta: "imatges/d/cadena.png" },
+    { nom: "dau",      categoria: "d", ruta: "imatges/d/dau.svg" },
+    { nom: "davantal", categoria: "d", ruta: "imatges/d/davantal.png" },
+    { nom: "dit",      categoria: "d", ruta: "imatges/d/dit.png" },
+    { nom: "dutxa",    categoria: "d", ruta: "imatges/d/dutxa.png" },
+    { nom: "dent",    categoria: "d", ruta: "imatges/d/dent.png" },
+    { nom: "dinar",    categoria: "d", ruta: "imatges/d/dinar.png" },
+    { nom: "dofi",    categoria: "d", ruta: "imatges/d/dofi.png" },
+    { nom: "nedar",    categoria: "d", ruta: "imatges/d/nedar.png" },
+    { nom: "adeu",    categoria: "d", ruta: "/imatges/d/adeu.png" },
+    { nom: "medusa",    categoria: "d", ruta: "/imatges/d/medusa.png" },
 
-    { nom: "balena",   categoria: "l", ruta: "../imatges/l/balena.png" },
-    { nom: "colze",    categoria: "l", ruta: "../imatges/l/colze.png" },
-    { nom: "galeta",   categoria: "l", ruta: "../imatges/l/galeta.png" },
-    { nom: "lavabo",   categoria: "l", ruta: "../imatges/l/lavabo.png" },
-    { nom: "lupa",     categoria: "l", ruta: "../imatges/l/lupa.png" },
-    { nom: "melo",     categoria: "l", ruta: "../imatges/l/melo.png" },
-    { nom: "pala",     categoria: "l", ruta: "../imatges/l/pala.png" },
-    { nom: "pilota",   categoria: "l", ruta: "../imatges/l/pilota.png" },
-    { nom: "plàtan",   categoria: "l", ruta: "../imatges/l/platan.png" },
-    { nom: "pantalo",   categoria: "l", ruta: "../imatges/l/pantalo.png" },
-    { nom: "taula",   categoria: "l", ruta: "../imatges/l/taula.png" },
-    { nom: "paleta",   categoria: "l", ruta: "../imatges/l/paleta.png" },
+    { nom: "balena",   categoria: "l", ruta: "imatges/l/balena.png" },
+    { nom: "colze",    categoria: "l", ruta: "imatges/l/colze.png" },
+    { nom: "galeta",   categoria: "l", ruta: "imatges/l/galeta.png" },
+    { nom: "lavabo",   categoria: "l", ruta: "imatges/l/lavabo.png" },
+    { nom: "lupa",     categoria: "l", ruta: "imatges/l/lupa.png" },
+    { nom: "melo",     categoria: "l", ruta: "imatges/l/melo.png" },
+    { nom: "pala",     categoria: "l", ruta: "imatges/l/pala.png" },
+    { nom: "pilota",   categoria: "l", ruta: "imatges/l/pilota.png" },
+    { nom: "plàtan",   categoria: "l", ruta: "imatges/l/platan.png" },
+    { nom: "pantalo",   categoria: "l", ruta: "imatges/l/pantalo.png" },
+    { nom: "taula",   categoria: "l", ruta: "imatges/l/taula.png" },
+    { nom: "paleta",   categoria: "l", ruta: "imatges/l/paleta.png" },
 
-    { nom: "cara",     categoria: "r", ruta: "../imatges/r/cara.png" },
-    { nom: "caramel",  categoria: "r", ruta: "../imatges/r/caramel.png" },
-    { nom: "cargol",   categoria: "r", ruta: "../imatges/r/cargol.png" },
-    { nom: "cinturo",  categoria: "r", ruta: "../imatges/r/cinturo.png" },
-    { nom: "fruita",   categoria: "r", ruta: "../imatges/r/fruita.png" },
-    { nom: "pare",     categoria: "r", ruta: "../imatges/r/pare.png" },
-    { nom: "mare",     categoria: "r", ruta: "../imatges/r/mare.png" },
-    { nom: "para-sol",     categoria: "r", ruta: "../imatges/r/para-sol.png" },
-    { nom: "mirar",     categoria: "r", ruta: "../imatges/r/mirar.png" },
-    { nom: "cirera",     categoria: "r", ruta: "../imatges/r/cirera.png" },
-    { nom: "camera",     categoria: "r", ruta: "../imatges/r/camera.png" },
-    { nom: "erico",     categoria: "r", ruta: "../imatges/r/erico.png" },
-    { nom: "toro",     categoria: "r", ruta: "../imatges/r/toro.png" }
+    { nom: "cara",     categoria: "r", ruta: "imatges/r/cara.png" },
+    { nom: "caramel",  categoria: "r", ruta: "imatges/r/caramel.png" },
+    { nom: "cargol",   categoria: "r", ruta: "imatges/r/cargol.png" },
+    { nom: "cinturo",  categoria: "r", ruta: "imatges/r/cinturo.png" },
+    { nom: "fruita",   categoria: "r", ruta: "imatges/r/fruita.png" },
+    { nom: "pare",     categoria: "r", ruta: "imatges/r/pare.png" },
+    { nom: "mare",     categoria: "r", ruta: "imatges/r/mare.png" },
+    { nom: "para-sol",     categoria: "r", ruta: "imatges/r/para-sol.png" },
+    { nom: "mirar",     categoria: "r", ruta: "imatges/r/mirar.png" },
+    { nom: "cirera",     categoria: "r", ruta: "imatges/r/cirera.png" },
+    { nom: "camera",     categoria: "r", ruta: "imatges/r/camera.png" },
+    { nom: "erico",     categoria: "r", ruta: "imatges/r/erico.png" },
+    { nom: "toro",     categoria: "r", ruta: "imatges/r/toro.png" }
 ];
 
 // ========== CONFIGURACIÓ ==========
@@ -64,10 +64,10 @@ let objIndex = 0;
 let noiseIndex = 0;
 
 // Sons (correcte/error)
-const soundClick = new Audio("../sons/bloop.mp3");
-const soundError = new Audio("../sons/error.mp3");
-const soundWin = new Audio("../sons/bloop.mp3");
-const soundLose = new Audio("../sons/bloop.mp3");
+const soundClick = new Audio("sons/bloop.mp3");
+const soundError = new Audio("sons/error.mp3");
+const soundWin = new Audio("sons/bloop.mp3");
+const soundLose = new Audio("sons/bloop.mp3");
 
 // ====================== FUNCS AUX ======================
 function showSection(id) {
