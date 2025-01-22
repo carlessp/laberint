@@ -11,8 +11,8 @@ const imatges = [
     { nom: "dinar",    categoria: "d", ruta: "imatges/d/dinar.png" },
     { nom: "dofi",    categoria: "d", ruta: "imatges/d/dofi.png" },
     { nom: "nedar",    categoria: "d", ruta: "imatges/d/nedar.png" },
-    { nom: "adeu",    categoria: "d", ruta: "/imatges/d/adeu.png" },
-    { nom: "medusa",    categoria: "d", ruta: "/imatges/d/medusa.png" },
+    { nom: "adeu",    categoria: "d", ruta: "imatges/d/adeu.png" },
+    { nom: "medusa",    categoria: "d", ruta: "imatges/d/medusa.png" },
 
     { nom: "balena",   categoria: "l", ruta: "imatges/l/balena.png" },
     { nom: "colze",    categoria: "l", ruta: "imatges/l/colze.png" },
