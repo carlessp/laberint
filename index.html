@@ -2,8 +2,9 @@
 <html lang="ca">
 <head>
   <meta charset="UTF-8" />
-  <title>Joc del Laberint</title>
+  <title>Joc del Laberint33</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <!-- Enllaç a l'arxiu CSS -->
   <link rel="stylesheet" href="style.css" />
 
@@ -24,7 +25,7 @@
 <!-- SECCIÓ BENVINGUDA -->
 <section id="section-welcome" class="section">
   <div class="container has-text-centered">
-    <button id="btnStart" class="button is-primary is-large">Comença</button>
+    <button id="btnStart" class="button is-large" style="background-color: #0066cc; color: white;">Comença</button>
   </div>
 </section>
 
@@ -51,7 +52,7 @@
         </div>
 
         <!-- Selector de nivells -->
-        <div class="field">
+        <!-- <div class="field">
           <label class="label">Nivell de dificultat:</label>
           <div class="control">
             <div class="select is-fullwidth">
@@ -62,10 +63,10 @@
               </select>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="field has-text-centered">
-          <button id="btnGenerateLab" class="button is-success is-medium">Genera Laberint</button>
+          <button id="btnGenerateLab" class="button is-medium" style="background-color: #0066cc; color: white;">Genera Laberint</button>
         </div>
       </div>
     </div>
@@ -97,7 +98,7 @@
 <div class="modal" id="modal-error">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">
+    <header class="modal-card-head" >
       <p class="modal-card-title">Error!</p>
       <button class="delete" aria-label="close" id="btnCloseErrorModal"></button>
     </header>
@@ -113,20 +114,40 @@
 
 <div class="modal" id="modal-gameover">
   <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Fi del joc!</p>
+  <div class="modal-content">
+    <header class="modal-card-head" >
+      <h2 class="modal-card-title" style="text-align: center !important; font-size: 1.5em !important;">Oh! No ho has aconseguit!</h2>
     </header>
-    <section class="modal-card-body">
-      <p>Has perdut totes les vides. Torna a intentar-ho!</p>
-    </section>
+    <p class="image is-4by3">
+      <img src="imatges/derrota.png" alt="">
+    </p>
     <footer class="modal-card-foot">
       <button class="button is-danger" id="btnGameOver">Torna a l'inici</button>
     </footer>
   </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+
 </div>
 
+
 <div class="modal" id="modal-win">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <header class="modal-card-head">
+      <h2 class="modal-card-title" style="text-align: center !important; font-size: 1.5em !important;">Has guanyat!</h2>
+    </header>
+    <p class="image is-4by3">
+      <img src="imatges/celebra.png" alt="">
+    </p>
+    <footer class="modal-card-foot">
+      <button class="button is-danger" id="btnWinOk">Torna a l'inici</button>
+    </footer>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+
+</div>
+
+<!-- <div class="modal" id="modal-win">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
@@ -139,7 +160,7 @@
       <button class="button is-success" id="btnWinOk">Continuar</button>
     </footer>
   </div>
-</div>
+</div> -->
 
 <!-- Enllaç a JS -->
 <script src="script.js"></script>
