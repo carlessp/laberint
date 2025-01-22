@@ -1,4 +1,4 @@
-const CACHE_NAME = 'laberint-v1';
+const CACHE_NAME = 'laberint-v1.5';
 const ASSETS = [
   '/',
   '/index.html',
