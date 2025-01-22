@@ -23,7 +23,7 @@
 </header>
 
 <!-- SECCIÓ BENVINGUDA -->
-<section id="section-welcome" class="section">
+<section id="section-welcome" class="section seccio">
   <div class="container has-text-centered">
     <button id="btnStart" class="button is-large" style="background-color: #0066cc; color: white;">Comença</button>
   </div>
@@ -74,7 +74,7 @@
 </section>
 
 <!-- SECCIÓ LABERINT -->
-<section id="section-labyrinth" class="section is-hidden">
+<section id="section-labyrinth" class="section is-hidden" style="padding: 5px !important;">
   <div id="portrait-warning" class="portrait-warning">
     <p>Si us plau, gira el dispositiu a <strong>mode horitzontal</strong> per jugar.</p>
   </div>
@@ -89,10 +89,19 @@
   </div>
 
   <!-- Grid i fitxa -->
-  <div class="grid" id="grid">
+  <div class="grid" id="grid" style="padding: 0 !important;">
     <div id="game-token">★</div>
   </div>
 </section>
+
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      Creat per Carles Sobrepere i Profitós
+    </p>
+  </div>
+</footer>
 
 <!-- MODALS (Error, GameOver, Win) -->
 <div class="modal" id="modal-error">
