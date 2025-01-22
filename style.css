@@ -1,183 +1,243 @@
 /* ========== CAPÇALERA ========== */
 .app-header {
-    background: linear-gradient(135deg, #003d82, #0066cc);
-    padding: 15px 0;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* background: linear-gradient(135deg, #FF6B6B, #FF8E53); */
+  background: linear-gradient(135deg, #003d82, #0066cc);
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  /* border-bottom: 4px solid #FF8E53; */
 }
 
 .app-title {
-    color: white;
-    margin: 0;
-    font-size: 2rem;
-    font-weight: bold;
+  color: white;
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: 'Patrick Hand', cursive;
 }
 
 .score {
-    color: white;
-    font-size: 1.2rem;
-    margin-top: 5px;
-}
-
-/* ========== AMAGAR SECCIONS ========== */
-.is-hidden {
-    display: none !important;
+  color: white;
+  font-size: 1.4rem;
+  margin-top: 8px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-family: 'Patrick Hand', cursive;
 }
 
 /* ========== VIDES ========== */
 #life-container {
-    display: inline-block;
-    margin: 10px;
+  display: inline-block;
+  margin: 15px;
+  animation: bounce 1s infinite;
 }
 
 .heart {
-    color: red;
-    font-size: 2rem;
-    margin: 0 5px;
+  color: red;
+  font-size: 2.5rem;
+  margin: 0 8px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
 }
 
-/* ========== AVÍS MODE PORTRAIT ========== */
-#portrait-warning {
-    display: none;
-    margin: 15px 0;
-    text-align: center;
-    color: #ff3860;
-    font-weight: bold;
-}
-
-.portrait-warning p {
-    margin: 0;
+.heart:hover {
+  transform: scale(1.2);
 }
 
 /* ========== GRID DEL LABERINT ========== */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
-    position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 15px;
+  justify-content: center;
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 900px;
+  background: linear-gradient(45deg, #f0f9ff 0%, #e6f3ff 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .grid-cell {
-    background-color: #f5f5f5;
-    border: 2px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
+  background-color: white;
+  border: 3px solid #4FB3FF;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(79, 179, 255, 0.2);
+}
+
+.grid-cell::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(79, 179, 255, 0.1), rgba(79, 179, 255, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .grid-cell:hover {
-    background-color: #e0e0e0;
-    transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(79, 179, 255, 0.3);
+}
+
+.grid-cell:hover::before {
+  opacity: 1;
 }
 
 .grid-cell img {
-    max-width: 70%;
-    max-height: 70%;
+  max-width: 75%;
+  max-height: 75%;
+  transition: transform 0.3s ease;
 }
 
-/* Casella encertada (ressalt) */
+.grid-cell:hover img {
+  transform: scale(1.1);
+}
+
+/* Casella encertada */
 .found {
-    background-color: #c5f7c5 !important;
-    box-shadow: inset 0 0 8px 2px #32CD32;
+  background-color: #AEFFD8 !important;
+  border-color: #2ECC71 !important;
+  box-shadow: inset 0 0 15px 2px rgba(46, 204, 113, 0.4);
+  animation: correctCell 0.5s ease;
+}
+
+/* Casella errònia */
+.grid-cell.error {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: #ccc;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.grid-cell.error img {
+  filter: grayscale(100%);
 }
 
 /* ========== FITXA (TOKEN) ========== */
 #game-token {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: gold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: #000;
-    transition: all 0.4s ease;
-    z-index: 10;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+/* Casella inicial */
+.start-cell {
+  border: 4px solid #2ECC71 !important;
+  position: relative;
+}
+
+.start-cell::after {
+  content: "🚦";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 1.5rem;
+}
+
+/* Casella final */
+.end-cell {
+  border: 4px solid #FF6B6B !important;
+  position: relative;
+}
+
+.end-cell::after {
+  content: "🏁";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 1.5rem;
+}
+
+.start-cell:not(.found) {
+  animation: bounce2 1.5s infinite;
+  border-style: solid !important;
+  z-index: 10;
+}
+
+/* Animació de pampallugues */
+@keyframes blink {
+  0%, 100% { border-color: #2ECC71; }
+  50% { border-color: transparent; }
+}
+
+/* ========== ANIMACIONS ========== */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes bounce2 {
+  0% { transform: translateY(0); }
+  50% { transform: scale(1.5); }
+  100% {transform: scale(1); }
+}
+
+
+@keyframes correctCell {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /* ========== MODALS ========== */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.3s;
-}
-
-.modal.is-active {
-    display: block;
-}
-
 .modal-card {
-    background-color: white;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
-    animation: slideIn 0.3s;
+  background-color: white;
+  margin: 10% auto;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 500px;
+  animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 4px solid #FF8E53;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.modal-card-title {
+  font-family: 'Patrick Hand', cursive;
+  color: #FF6B6B;
+  font-size: 1.8rem;
 }
 
-@keyframes slideIn {
-    from { transform: translateY(-20px); }
-    to { transform: translateY(0); }
+.modal-card-body {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #666;
 }
 
-/* ========== MÒBILS: DETECTAR SI ESTÀ EN PORTRAIT ========== */
-@media (max-width: 600px) and (orientation: portrait) {
-    #portrait-warning {
-        display: block;
-        font-size: 1.2rem;
-        padding: 20px;
-        background-color: #ff3860;
-        color: white;
-        border-radius: 10px;
-    }
-
-    .grid {
-        display: none;
-    }
-}
-
-@media (max-width: 600px) and (orientation: landscape) {
-    .grid {
-        grid-template-columns: repeat(6, 60px);
-        grid-template-rows: repeat(4, 60px);
-    }
-
-    #portrait-warning {
-        display: none;
-    }
-}
-
-/* ========== TABLETS I PC ========== */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(6, 80px);
-        grid-template-rows: repeat(4, 80px);
-    }
-}
-
-@media (min-width: 1025px) {
-    .grid {
-        grid-template-columns: repeat(6, 100px);
-        grid-template-rows: repeat(4, 100px);
-    }
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+  .grid {
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .grid-cell {
+    border-width: 2px;
+  }
+  
+  #game-token {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
 }
